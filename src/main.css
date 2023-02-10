@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 17px;
 }
 
 :root{
@@ -38,6 +39,9 @@
     margin-left: 10px;
     cursor: pointer;
 }
+
+
+
 #btn-login{
     width: 100px;
     border: 2px solid var(--button--border);
@@ -315,7 +319,7 @@
     width: 100%;
     height: 50vh;
     margin-top: 50px;
-    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(./img/banner.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(/img/banner.jpg);
 }
 .banner .content{
     text-align: center;
@@ -352,7 +356,7 @@
     margin-top: 50px;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(./img/banner2.png);
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(/images/banner2.png);
     background-size: cover;
     background-repeat: no-repeat;
 }
