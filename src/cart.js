@@ -26,13 +26,69 @@ calculation();
  * ? When basket is blank -> show's Cart is Emptydet
  */
 
+// let generateCartItems = () => {
+//   if (basket.length !== 0) {
+//     return (ShoppingCart.innerHTML = basket
+//       .map((x) => {
+        
+//         let { id, item } = x;
+//         let search = shopItemsData.find((x) => x.id === id) || [];
+//         let { img, price, name } = search;
+        
+//         return `
+//       <div class="cart-item">
+//         <img width="150" src=${img} alt="" />
+
+//         <div class="details">
+        
+//           <div class="title-price-x">
+//             <h4 class="title-price">
+//               <p>${name}</p>
+//               <p class="cart-item-price">$${price}</p>
+//             </h4>
+//             <i onclick="removeItem(${id})" class="bi bi-x-lg"></i>
+//           </div>
+
+//           <div class="cart-buttons">
+//             <div class="buttons">
+//               <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
+//               <div id=${id} class="quantity">${item}</div>
+//               <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
+//             </div>
+//           </div>
+
+//           <h3>$ ${item * price}</h3>
+        
+//         </div>
+//       </div>
+//       `;
+//       })
+//       .join(""));
+//   } else {
+//     ShoppingCart.innerHTML = "";
+//     label.innerHTML = `
+//     <h2>Cart is Empty</h2>
+//     <a href="product.html">
+//       <button class="HomeBtn">Back to Home</button>
+//     </a>
+//     `;
+//   }
+// };
+
 let generateCartItems = () => {
   if (basket.length !== 0) {
     return (ShoppingCart.innerHTML = basket
       .map((x) => {
+        
         let { id, item } = x;
         let search = shopItemsData.find((x) => x.id === id) || [];
         let { img, price, name } = search;
+
+        let formattedPrice = price.toLocaleString(undefined, {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+        
         return `
       <div class="cart-item">
         <img width="150" src=${img} alt="" />
@@ -42,7 +98,7 @@ let generateCartItems = () => {
           <div class="title-price-x">
             <h4 class="title-price">
               <p>${name}</p>
-              <p class="cart-item-price">$${price}</p>
+              <p class="cart-item-price">$${formattedPrice}</p>
             </h4>
             <i onclick="removeItem(${id})" class="bi bi-x-lg"></i>
           </div>
@@ -55,7 +111,10 @@ let generateCartItems = () => {
             </div>
           </div>
 
-          <h3>$ ${item * price}</h3>
+          <h3>$ ${(item * price).toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          })}</h3>
         
         </div>
       </div>
@@ -72,6 +131,8 @@ let generateCartItems = () => {
     `;
   }
 };
+
+
 
 generateCartItems();
 
@@ -158,8 +219,13 @@ let TotalAmount = () => {
       })
       .reduce((x, y) => x + y, 0);
 
+    let formattedAmount = amount.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+
     return (label.innerHTML = `
-    <h2>Total Bill : $ ${amount}</h2>
+    <h2>Total Bill : ${formattedAmount}</h2>
     <button class="checkout">Checkout</button>
     <button onclick="clearCart()" class="removeAll">Clear Cart</button>
     `);
@@ -167,6 +233,28 @@ let TotalAmount = () => {
 };
 
 TotalAmount();
+
+
+
+// let TotalAmount = () => {
+//   if (basket.length !== 0) {
+//     let amount = basket
+//       .map((x) => {
+//         let { id, item } = x;
+//         let filterData = shopItemsData.find((x) => x.id === id);
+//         return filterData.price * item;
+//       })
+//       .reduce((x, y) => x + y, 0);
+
+//     return (label.innerHTML = `
+//     <h2>Total Bill : $ ${amount}</h2>
+//     <button class="checkout">Checkout</button>
+//     <button onclick="clearCart()" class="removeAll">Clear Cart</button>
+//     `);
+//   } else return;
+// };
+
+// TotalAmount();
 
 /**
  * ! Used to clear cart, and remove everything from local storage

@@ -25,7 +25,10 @@ let generateShop = () => {
         <h3>${name}</h3>
         <p>${desc}</p>
         <div class="price-quantity">
-          <h2>$ ${price} </h2>
+          <h5> ${price.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      })} </h2>
           <div class="buttons">
             <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
             <div id=${id} class="quantity">${
@@ -42,6 +45,37 @@ let generateShop = () => {
 };
 
 generateShop();
+
+
+// let generateShop = () => {
+//   return (shop.innerHTML = shopItemsData
+//     .map((x) => {
+//       let { id, name, desc, img, price } = x;
+//       let search = basket.find((y) => y.id === id) || [];
+//       return `
+//     <div id=product-id-${id} class="item">
+//       <img width="220" src=${img} alt="">
+//       <div class="details">
+//         <h3>${name}</h3>
+//         <p>${desc}</p>
+//         <div class="price-quantity">
+//           <h2>$ ${price} </h2>
+//           <div class="buttons">
+//             <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
+//             <div id=${id} class="quantity">${
+//         search.item === undefined ? 0 : search.item
+//       }</div>
+//             <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//     `;
+//     })
+//     .join(""));
+// };
+
+// generateShop();
 
 /**
  * ! used to increase the selected product item quantity by 1
