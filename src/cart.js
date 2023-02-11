@@ -175,49 +175,21 @@ let TotalAmount = () => {
       currency: "USD",
     });
 
-    return (label.innerHTML = `
+    label.innerHTML = `
     <h2>Total Bill : ${formattedAmount}</h2>
     <button class="checkout">Checkout</button>
     <button onclick="clearCart()" class="removeAll">Clear Cart</button>
-    `);
+    `;
+
+    let checkoutButton = document.querySelector('.checkout');
+    checkoutButton.addEventListener('click', function() {
+      window.location.href = 'checkout.html';
+    });
   } else return;
 };
 
 TotalAmount();
 
-// Attach an event listener to the "Checkout" button
-// document.querySelector(".checkout").addEventListener("click", () => {
-//   // Display the popup form
-//   alert("Processing your payment");
-// });
-
-//Attach an event listener to the "Checkout" button
-document.querySelector(".checkout").addEventListener("click", () => {
-  //Redirect the user to the checkout page
-window.location = "/checkout.html";
-});
-
-
-
-// let TotalAmount = () => {
-//   if (basket.length !== 0) {
-//     let amount = basket
-//       .map((x) => {
-//         let { id, item } = x;
-//         let filterData = shopItemsData.find((x) => x.id === id);
-//         return filterData.price * item;
-//       })
-//       .reduce((x, y) => x + y, 0);
-
-//     return (label.innerHTML = `
-//     <h2>Total Bill : $ ${amount}</h2>
-//     <button class="checkout">Checkout</button>
-//     <button onclick="clearCart()" class="removeAll">Clear Cart</button>
-//     `);
-//   } else return;
-// };
-
-// TotalAmount();
 
 /**
  * ! Used to clear cart, and remove everything from local storage
