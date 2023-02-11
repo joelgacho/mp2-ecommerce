@@ -26,55 +26,6 @@ calculation();
  * ? When basket is blank -> show's Cart is Emptydet
  */
 
-// let generateCartItems = () => {
-//   if (basket.length !== 0) {
-//     return (ShoppingCart.innerHTML = basket
-//       .map((x) => {
-        
-//         let { id, item } = x;
-//         let search = shopItemsData.find((x) => x.id === id) || [];
-//         let { img, price, name } = search;
-        
-//         return `
-//       <div class="cart-item">
-//         <img width="150" src=${img} alt="" />
-
-//         <div class="details">
-        
-//           <div class="title-price-x">
-//             <h4 class="title-price">
-//               <p>${name}</p>
-//               <p class="cart-item-price">$${price}</p>
-//             </h4>
-//             <i onclick="removeItem(${id})" class="bi bi-x-lg"></i>
-//           </div>
-
-//           <div class="cart-buttons">
-//             <div class="buttons">
-//               <i onclick="decrement(${id})" class="bi bi-dash-lg"></i>
-//               <div id=${id} class="quantity">${item}</div>
-//               <i onclick="increment(${id})" class="bi bi-plus-lg"></i>
-//             </div>
-//           </div>
-
-//           <h3>$ ${item * price}</h3>
-        
-//         </div>
-//       </div>
-//       `;
-//       })
-//       .join(""));
-//   } else {
-//     ShoppingCart.innerHTML = "";
-//     label.innerHTML = `
-//     <h2>Cart is Empty</h2>
-//     <a href="product.html">
-//       <button class="HomeBtn">Back to Home</button>
-//     </a>
-//     `;
-//   }
-// };
-
 let generateCartItems = () => {
   if (basket.length !== 0) {
     return (ShoppingCart.innerHTML = basket
@@ -233,6 +184,18 @@ let TotalAmount = () => {
 };
 
 TotalAmount();
+
+// Attach an event listener to the "Checkout" button
+// document.querySelector(".checkout").addEventListener("click", () => {
+//   // Display the popup form
+//   alert("Processing your payment");
+// });
+
+//Attach an event listener to the "Checkout" button
+document.querySelector(".checkout").addEventListener("click", () => {
+  //Redirect the user to the checkout page
+window.location = "/checkout.html";
+});
 
 
 
